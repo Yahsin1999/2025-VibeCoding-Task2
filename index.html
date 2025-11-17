@@ -141,28 +141,44 @@
     /* CSS:HERO-END */
 
     /* CSS:ABOUT-START */
-    .section-about .section-title,
-    .section-skills .section-title,
-    .section-projects .section-title,
-    .section-contact .section-title{
-      margin:0 0 0.75rem 0;
-      font-size:1.15rem;
-      color:var(--text);
-    }
-    .section-about p,
-    .section-skills p,
-    .section-projects p,
-    .section-contact p{
-      margin:0 0 0.75rem 0;
-      color:var(--muted);
-      max-width:70ch;
-    }
-    .about-grid{
-      display:flex;
-      flex-direction:column;
-      gap:1rem;
-    }
-    .about-figure{ width:100%; max-width:420px; }
+    
+  .about-section {
+    padding: 100px 20px;
+    background-color: #fafafa;
+  }
+
+  .about-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #222;
+  }
+
+  .about-paragraph {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: #444;
+  }
+
+  .about-strengths {
+    margin-top: 30px;
+    padding-left: 20px;
+  }
+
+  .about-strengths li {
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+    color: #333;
+    list-style-type: disc;
+  }
+
     /* CSS:ABOUT-END */
 
     /* CSS:SKILLS-START */
@@ -226,6 +242,31 @@
       .hero-title{ font-size:2.4rem; }
       .projects-grid{ grid-template-columns:repeat(3,1fr); }
     }
+    /* ===== FIX: 防止水平捲動 ===== */
+
+    /* 任何視窗寬度都禁止 X 軸捲動 */
+    html, body {
+      overflow-x: hidden;
+    }
+
+    /* nav 在小螢幕要自動換行：防止 320px 水平爆版 */
+    .nav-list {
+      flex-wrap: wrap;
+    }
+
+    /* hero 區圖與文字在窄螢幕避免寬度不受控 */
+    .hero-inner {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    /* 若圖片計算寬度超出容器，強制收回 */
+    .hero-figure img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
     /* CSS:RWD-END */
   </style>
 </head>
@@ -269,23 +310,30 @@
       </section>
       <!-- SECTION:HERO-END -->
 
-      <!-- SECTION:ABOUT-START -->
-      <section id="about" class="section section-about" aria-labelledby="about-heading">
-        <div class="container">
-          <div class="about-grid">
-            <div>
-              <h2 id="about-heading" class="section-title">關於我（之後會用 Section SDD 替換）</h2>
-              <p>這裡目前是 About 區的占位內容，包含簡短自我介紹與專業摘要。未來會用 Section SDD 產生更完整內容與版面。</p>
-              <p class="muted">之後會用 Section SDD 的 Prompt 產生新的 section，請把新的 section 程式碼整段貼在這兩個註解中間，完全取代現在這一區。</p>
-            </div>
+     <!-- ===== About Section ===== -->
+  <section id="about" class="about-section">
+    <div class="about-container">
+      <h2 class="section-title">About Me</h2>
 
-            <div class="about-figure" aria-hidden="false">
-              <img src="https://source.unsplash.com/800x600/?developer,desk" alt="開發者與工作桌的示意照" loading="lazy" />
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- SECTION:ABOUT-END -->
+      <p class="about-paragraph">
+      我是一名專注於前端技術與使用者體驗的工程師，擅長將需求拆解並轉化為清晰且可維護的介面設計。
+      對我而言，好的工程不是堆積功能，而是打造直覺、順暢、能真正解決問題的產品。
+      </p>
+
+      <p class="about-paragraph">
+      我相信溝通與邏輯能讓開發過程事半功倍。在專案中，我會以使用者與團隊的角度思考資訊流、
+      互動方式與開發路徑，並持續調整細節，使產品在功能與體驗之間達成最好的平衡。
+      </p>
+
+      <ul class="about-strengths">
+        <li>擅長將複雜需求拆解為簡潔明確的前端規格</li>
+        <li>注重 UX 細節，熟悉將資訊以最直覺的方式傳達</li>
+        <li>具備良好的溝通能力，能在多人協作中保持流程順暢</li>
+      </ul>
+    </div>
+  </section>
+<!-- ===== End About Section ===== -->
+
 
       <!-- SECTION:SKILLS-START -->
       <section id="skills" class="section section-skills" aria-labelledby="skills-heading">
